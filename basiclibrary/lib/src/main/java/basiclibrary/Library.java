@@ -15,6 +15,15 @@ public class Library {
         System.out.println("dice roll " + roll(5));
         int[] array = {1,2,3,4,6,1,8};
         System.out.println( containsDuplicates(array));
+        System.out.println( averagesCalculating(array));
+        // Daily average temperatures for Seattle, October 1-28 2017
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        nestedArray(weeklyMonthTemperatures);
 
 
     }
@@ -32,8 +41,8 @@ public class Library {
         }
         return resultArray;
     }
-    //Contains Duplicates
 
+    //Contains Duplicates
     public static boolean containsDuplicates(int[] duplicateArr) {
 
         for (int i = 0; i < duplicateArr.length; i++) {
@@ -51,7 +60,27 @@ public class Library {
     }
 
     // Calculating Averages
+    public static double averagesCalculating(int[] array){
+        int sum = 0;
+        double averag = 0;
+        for (int j : array) {
+            sum += j;
+        }
+        averag = (double)sum / array.length;
+        return averag;
+    }
 
+   //Arrays of Arrays
+   public static int[] nestedArray (int[][] array ){
+       int [] newArray= array[0];
+       for (int i = 0; i <array.length ; i++) {
+           if(averagesCalculating(array[i])<averagesCalculating (array[i])){
+               newArray=array[i];
+           }
+       }
+       System.out.println(Arrays.toString(newArray));
+       return newArray;
+   }
 
 }
 
