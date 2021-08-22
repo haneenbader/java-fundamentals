@@ -13,9 +13,9 @@ public class Library {
     public static void main(String[] args) {
 
         System.out.println("dice roll " + roll(5));
-        int[] array = {1,2,3,4,6,1,8};
-        System.out.println( containsDuplicates(array));
-        System.out.println( averagesCalculating(array));
+        int[] array = {1, 2, 3, 4, 6, 1, 8};
+        System.out.println(containsDuplicates(array));
+        System.out.println(averagesCalculating(array));
         // Daily average temperatures for Seattle, October 1-28 2017
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
@@ -24,19 +24,32 @@ public class Library {
                 {65, 56, 55, 52, 55, 62, 57}
         };
         nestedArray(weeklyMonthTemperatures);
+        AnalyzingWeatherData(weeklyMonthTemperatures);
 
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String winner = tally(votes);
+        System.out.println(winner + " received the most votes!");
 
     }
 
 
-
     //Rolling Dice
-    public static ArrayList roll(int n){
+    public static ArrayList roll(int n) {
         ArrayList<Integer> resultArray = new ArrayList<Integer>();
         int min = 1;
         int max = 6;
         for (int i = 0; i < n; i++) {
-            int random = (int) (Math.random()* (max - min)) + 1;
+            int random = (int) (Math.random() * (max - min)) + 1;
             resultArray.add(random);
         }
         return resultArray;
@@ -60,28 +73,79 @@ public class Library {
     }
 
     // Calculating Averages
-    public static double averagesCalculating(int[] array){
+    public static double averagesCalculating(int[] array) {
         int sum = 0;
         double averag = 0;
         for (int j : array) {
             sum += j;
         }
-        averag = (double)sum / array.length;
+        averag = (double) sum / array.length;
         return averag;
     }
 
-   //Arrays of Arrays
-   public static int[] nestedArray (int[][] array ){
-       int [] newArray= array[0];
-       for (int i = 0; i <array.length ; i++) {
-           if(averagesCalculating(array[i])<averagesCalculating (array[i])){
-               newArray=array[i];
-           }
-       }
-       System.out.println(Arrays.toString(newArray));
-       return newArray;
-   }
+    //Arrays of Arrays
+    public static int[] nestedArray(int[][] array) {
+        int[] newArray = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (averagesCalculating(array[i]) < averagesCalculating(array[i])) {
+                newArray = array[i];
+            }
+        }
+        System.out.println(Arrays.toString(newArray));
+        return newArray;
+    }
 
+    //lab03 : Analyzing Weather Data
+    public static String AnalyzingWeatherData(int[][] array) {
+        int highTemp = array[0][0];
+        int lowTemp = array[0][0];
+        //Creating HashSet and adding elements
+        HashSet<Integer> tempreture = new HashSet<Integer>();
+        for (int[] weekTemp : array) {
+            for (int dayTemp : weekTemp) {
+                if (dayTemp > highTemp) {
+                    highTemp = dayTemp;
+                }
+                if (dayTemp < lowTemp) {
+                    lowTemp = dayTemp;
+                }
+                tempreture.add(dayTemp);
+            }
+
+        }
+        System.out.println("High : " + highTemp);
+        System.out.println("low: " + lowTemp);
+
+        String neverSawTemp = "";
+        for (int i = lowTemp; i < highTemp; i++) {
+            if (!tempreture.contains(i)){
+             System.out.println ("Never saw temperature: " + i);
+            }
+        }
+
+        return neverSawTemp;
+
+    }
+
+//    lab03 : Tallying Election
+     public static String tally(List<String> votes){
+         HashMap<String,Integer> newVote = new HashMap<String,Integer>();
+         String winner = "";
+         int maxVote = 0;
+
+         for (String vote : votes) {
+             if (!newVote.containsKey(vote)) {
+                 newVote.put(vote, 1);
+             } else {newVote.put(vote ,newVote.get(vote)+1 );
+             }
+         }
+         //loop over the entry set
+         for (Map.Entry<String, Integer> entry : newVote.entrySet()){
+             if (entry.getValue() > maxVote){
+                 maxVote = entry.getValue();
+                 winner = entry.getKey();
+             }
+         }
+         return winner;
+     }
 }
-
-
