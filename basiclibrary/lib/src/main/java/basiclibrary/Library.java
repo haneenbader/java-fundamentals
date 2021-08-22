@@ -26,6 +26,20 @@ public class Library {
         nestedArray(weeklyMonthTemperatures);
         AnalyzingWeatherData(weeklyMonthTemperatures);
 
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String winner = tally(votes);
+        System.out.println(winner + " received the most votes!");
+
     }
 
 
@@ -82,8 +96,6 @@ public class Library {
     }
 
     //lab03 : Analyzing Weather Data
-
-
     public static String AnalyzingWeatherData(int[][] array) {
         int highTemp = array[0][0];
         int lowTemp = array[0][0];
@@ -114,4 +126,26 @@ public class Library {
         return neverSawTemp;
 
     }
+
+//    lab03 : Tallying Election
+     public static String tally(List<String> votes){
+         HashMap<String,Integer> newVote = new HashMap<String,Integer>();
+         String winner = "";
+         int maxVote = 0;
+
+         for (String vote : votes) {
+             if (!newVote.containsKey(vote)) {
+                 newVote.put(vote, 1);
+             } else {newVote.put(vote ,newVote.get(vote)+1 );
+             }
+         }
+         //loop over the entry set
+         for (Map.Entry<String, Integer> entry : newVote.entrySet()){
+             if (entry.getValue() > maxVote){
+                 maxVote = entry.getValue();
+                 winner = entry.getKey();
+             }
+         }
+         return winner;
+     }
 }
