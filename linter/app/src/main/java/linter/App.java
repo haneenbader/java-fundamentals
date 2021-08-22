@@ -24,7 +24,7 @@ public class App {
             int lineNumber = 1;
             for(String line : fileLines) {
                 if (!line.endsWith(";") && !line.endsWith("}") && !line.endsWith("{") && !line.contains("else") && !line.contains("if") && !line.equals("")){
-                    String printLine = "Line " + lineNumber + " : Missing semicolon.";
+                    String printLine = "Line " + lineNumber + " : Missing semicolon.\n" ;
                     finalLines.add(printLine);
                 }
                 lineNumber++;
