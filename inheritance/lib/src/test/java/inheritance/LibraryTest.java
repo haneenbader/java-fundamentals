@@ -12,7 +12,8 @@ class LibraryTest {
         Library classUnderTest = new Library();
         assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
     }
-    @Test void testingRestaurantClass() {
+    @Test
+    void testingRestaurantClass() {
 
         //  Test restaurant before review
         Restaurant testRestaurant = new Restaurant("firefly", 5);
@@ -29,4 +30,17 @@ class LibraryTest {
         testRestaurant.addReview("haneen", 3);
         assertEquals("Restaurant Name:firefly,stars:3.0, Price Category:5.0$, reviews=[haneen rate :3.0 stars ]" , testRestaurant.toString());
 
-    }}
+    }
+
+    @Test
+    void Shop() {
+        Shop newShop = new Shop("almohet","see food",3);
+        assertEquals("almohet",newShop.getName());
+        assertEquals("see food",newShop.getDescription());
+        assertEquals("$$$",newShop.getNumber());
+
+      assertEquals(" Shop{name: almohet description see food number $$$ reviews []}",newShop.toString());
+
+    }
+
+}

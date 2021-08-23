@@ -9,7 +9,7 @@ public class Library {
     }
 
     public static void main (String arg[]){
-        System.out.print("hello");
+        System.out.print("hello\n");
 
         Restaurant newRestaurant = new Restaurant("Fire fly",4);
         newRestaurant.addReview("haneen" , 3);
@@ -18,5 +18,7 @@ public class Library {
 
         System.out.println(newRestaurant);
 
+       Shop newShop = new Shop("almohet","see food",3);
+        newShop.addReview("zaina" , 2);
     }
 }
