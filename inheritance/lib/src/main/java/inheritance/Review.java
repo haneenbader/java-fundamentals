@@ -5,7 +5,7 @@ public class Review {
     private String author;
     private float stars;
 
-    public Review(String author , float stars ){
+    public Review( String author  , float stars ){
         if (stars > 5){
             this.stars = 5;
         }else if (stars < 0){
@@ -15,6 +15,7 @@ public class Review {
         }
 
         this.author = author;
+
     }
 
     public String getBody() {
