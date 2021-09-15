@@ -33,3 +33,13 @@ Write a function called tally that accepts a List of Strings representing votes 
 
 3- JavaScript Linter
 Write a method that reads a JavaScript file with a given Path, and generates an error message whenever it finds a line that doesn’t end in a semi-colon.
+______________________________________________________
+
+# lab-06 : Composition and Inheritance, Part 2
+
+Finished Tasks :
+1-Add a Review for Restaurants : Create a class to represent a Restaurant. Each Restaurant should have a name, a number of stars betweeen 0 and 5, and a price category 2-Create a class to represent a Review. Each Review should have a body, an author, and a number of stars. 3-A Review should be about a single Restaurant. Choose an implementation for this, and implement it. 4-Add an instance method addReview to your Restaurant class. This method should take in a Review instance, and associate that review with this Restaurant 5-When you associate a review with a restaurant, that restaurant’s star rating should change. Ensure that your addReview method updates the Restaurant star rating appropriately
+_____________________________________________________
+# lab-07 : Composition and Inheritance, Part 1
+**Finished Tasks :**
+1-The users want shops! Create a Shop class; a Shop should have a name, description, and number of dollar signs. 2-The users also want to review shops 3-The users want theaters! Create a Theater class; a Theater should have a name and all of the movies currently showing there 4-Review all the things 5-Users are frustrated: they like having a body, an author, and a number of stars, but when they’re reviewing a Theater, they also want to specify which movie they saw. 
