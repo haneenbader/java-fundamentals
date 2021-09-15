@@ -23,11 +23,11 @@ class LibraryTest {
 
 
         //Test review
-        Review testReview = new Review("ahmad", 4);
+        Review testReview = new Review("ahmad","test", 4);
         assertEquals("ahmad rate :4.0 stars ", testReview.toString());
 
         //  Test addReview method
-        testRestaurant.addReview("haneen", 3);
+        testRestaurant.addReview("haneen","test", 3);
         assertEquals("Restaurant Name:firefly,stars:3.0, Price Category:5.0$, reviews=[haneen rate :3.0 stars ]" , testRestaurant.toString());
 
     }
@@ -43,4 +43,31 @@ class LibraryTest {
 
     }
 
+
+    @ Test void theaterClassTest(){
+        // basic theater class test
+        Theater newTheater = new Theater("cima");
+        assertEquals("Theater{name='cima', stars=0.0, movies=[], reviews=[]}",newTheater.toString());
+
+        // adding movies test
+        newTheater.addMovie("Inception");
+        newTheater.addMovie("Shutter island");
+        assertEquals("Theater{name='cima', stars=0.0, movies=[Inception, Shutter island], reviews=[]}",newTheater.toString());
+
+
+        // remove movie test
+        newTheater.removeMovie("Shutter island");
+        assertEquals("Theater{name='cima', stars=0.0, movies=[Inception], reviews=[]}",newTheater.toString());
+
+
+        // test adding a review without mentioning movie name
+        newTheater.addReview("haneen","i like the theater design",5);
+        assertEquals("Theater{name='cima', stars=5.0, movies=[Inception], reviews=[haneen ( said: i like the theater design, and rate it with =5.0 stars ]}",newTheater.toString());
+
+
+        //adding a review with mention a movie name
+        newTheater.addReview("somebody","nice movie i love it",4,"inception");
+        assertEquals("Theater{name='cima', stars=4.5, movies=[Inception], reviews=[haneen ( said: i like the theater design, and rate it with =5.0 stars , somebody ( said: nice movie i love it, and rate it with =4.0 stars ,movie name: inception)]}",newTheater.toString());
+
+    }
 }

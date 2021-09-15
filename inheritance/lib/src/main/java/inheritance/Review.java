@@ -4,8 +4,9 @@ public class Review {
     private String body;
     private String author;
     private float stars;
+    private String movie;
 
-    public Review( String author  , float stars ){
+    public Review( String author ,String body , float stars ){
         if (stars > 5){
             this.stars = 5;
         }else if (stars < 0){
@@ -15,7 +16,23 @@ public class Review {
         }
 
         this.author = author;
+        this.body = body;
 
+    }
+
+
+    public Review(String author  ,String body , float stars ,String movie){
+        if (stars > 5){
+            this.stars = 5;
+        }else if (stars < 0){
+            this.stars=0;
+        }else{
+            this.stars = stars;
+        }
+
+        this.author = author;
+        this.body = body;
+        this.movie =movie;
     }
 
     public String getBody() {
@@ -30,6 +47,15 @@ public class Review {
     public void setBody(String body) {
         this.body = body;
     }
+
+    public String getMovie() {
+        return movie;
+    }
+
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
+
     public void setAuthor(String author) {
         this.author = author;
     }

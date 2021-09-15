@@ -35,10 +35,10 @@ public abstract class LocationType {
         this.reviews = reviews;
     }
 
-    public void addReview( String author , float stars){
+    public void addReview( String author ,String body , float stars){
         // inherit from review class
 
-        Review newReview = new Review(author , stars);
+        Review newReview = new Review(author , body,stars);
         this.starsTotal+= newReview.getStars();
         this.reviewsTotal+=1;
         this.stars = this.starsTotal/this.reviewsTotal;

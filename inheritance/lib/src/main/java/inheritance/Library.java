@@ -12,13 +12,21 @@ public class Library {
         System.out.print("hello\n");
 
         Restaurant newRestaurant = new Restaurant("Fire fly",4);
-        newRestaurant.addReview("haneen" , 3);
-        newRestaurant.addReview("zaina" , 2);
-        newRestaurant.addReview("bilal" , 5);
+        newRestaurant.addReview("haneen","test" , 3);
+        newRestaurant.addReview("zaina" ,"test", 2);
+        newRestaurant.addReview("bilal" ,"test", 5);
 
         System.out.println(newRestaurant);
 
        Shop newShop = new Shop("almohet","see food",3);
-        newShop.addReview("zaina" , 2);
+        newShop.addReview("zaina","test" , 2);
+
+
+        Theater newTheater = new Theater("testing");
+        newTheater.addMovie("anything");
+        newTheater.addMovie("anything");
+        newTheater.addReview("haneen", "i like this movie",4 , "anything" );
+
+        System.out.println(newTheater);
     }
 }
