@@ -4,8 +4,53 @@
 package linter;
 
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import static linter.App.* ;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class AppTest {
 
+
+    @Test void testingLinter(){
+
+
+        // testing for a no errors js file
+        String noErrOut = "";
+        Path noErrorFile = Paths.get("src/main/resources/testNoError.js");
+        assertEquals(noErrOut,linter(noErrorFile));
+
+
+        // testing for a one error js file
+        String oneErrOut = "Line 3: Missing semicolon.\n";
+        Path oneErrorFile = Paths.get("src/main/resources/testOneError.js");
+
+        assertEquals(oneErrOut,linter(oneErrorFile));
+
+
+
+        // testing for a some error js file
+        String someErrOut = "Line 3: Missing semicolon.\n"+"Line 5: Missing semicolon.\n";
+        Path someErrorsFile = Paths.get("src/main/resources/testSomeError.js");
+
+        assertEquals(someErrOut,linter(someErrorsFile));
+
+
+
+        // testing for a many error js file
+        String manyErrOut = "Line 3: Missing semicolon.\n"+"Line 5: Missing semicolon.\n"+"Line 10: Missing semicolon.\n"+"Line 11: Missing semicolon.\n"+"Line 12: Missing semicolon.\n"+"Line 13: Missing semicolon.\n"+"Line 14: Missing semicolon.\n";
+        Path manyErrorsFile = Paths.get("src/main/resources/testManyError.js");
+
+        assertEquals(manyErrOut,linter(manyErrorsFile));
+
+
+
+        // testing for an empty js file
+        String emptyErrOut = "";
+        Path emptyFile = Paths.get("src/main/resources/empty.js");
+
+        assertEquals(emptyErrOut,linter(emptyFile));
+    }
 }
